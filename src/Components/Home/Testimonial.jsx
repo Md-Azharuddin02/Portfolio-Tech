@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../Store/ThemeContext ";
 import vivek from "../../assets/people/Vivek.jfif";
 import saurabh from "../../assets/people/saurabh.jfif";
-import simran from "../../assets/people/simran.jfif";
+import simran from "../../assets/people/Simran.jfif";
 import shruthi from "../../assets/people/one.jpg";
 
 // Testimonial data
@@ -39,22 +39,22 @@ const TESTIMONIALS = [
     text: "Great collaboration skills and attention to design details. They understand both aesthetics and functionality.",
     delay: "3000",
   },
-  {
-    id: 5,
-    name: "Lisa Anderson",
-    role: "Project Manager",
-    image: "https://randomuser.me/api/portraits/women/5.jpg",
-    text: "Excellent communication and always delivers on time. A reliable developer who takes initiative.",
-    delay: "4000",
-  },
-  {
-    id: 6,
-    name: "James Taylor",
-    role: "Backend Developer",
-    image: "https://randomuser.me/api/portraits/men/6.jpg",
-    text: "Strong problem-solving abilities and great system architecture skills. Always writes clean, maintainable code.",
-    delay: "5000",
-  },
+  // {
+  //   id: 5,
+  //   name: "Lisa Anderson",
+  //   role: "Project Manager",
+  //   image: "https://randomuser.me/api/portraits/women/5.jpg",
+  //   text: "Excellent communication and always delivers on time. A reliable developer who takes initiative.",
+  //   delay: "4000",
+  // },
+  // {
+  //   id: 6,
+  //   name: "James Taylor",
+  //   role: "Backend Developer",
+  //   image: "https://randomuser.me/api/portraits/men/6.jpg",
+  //   text: "Strong problem-solving abilities and great system architecture skills. Always writes clean, maintainable code.",
+  //   delay: "5000",
+  // },
 ];
 
 function TestimonialCard({ testimonial, isDark, isCenter, position }) {

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../Store/ThemeContext ";
-import vivek from "../../assets/people/vivek.jfif";
+import vivek from "../../assets/people/Vivek.jfif";
 import saurabh from "../../assets/people/saurabh.jfif";
 import simran from "../../assets/people/simran.jfif";
 import shruthi from "../../assets/people/one.jpg";

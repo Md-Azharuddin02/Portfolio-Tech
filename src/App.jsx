@@ -16,7 +16,7 @@ const LoadingSpinner = () => (
 function App() {
   return (
     <ErrorBoundary>
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<LoadingSpinner/>}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

@@ -38,7 +38,6 @@ function Project() {
                   loading="lazy"
                 />
               </div>
-
               <div
                 className="absolute inset-0
                           bg-gradient-to-t from-yellow-600/0 via-yellow-500/0 to-yellow-400/0
@@ -84,5 +83,4 @@ function Project() {
     </section>
   );
 }
-
 export default Project;

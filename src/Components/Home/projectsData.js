@@ -5,11 +5,12 @@ import agumentik from "../../assets/images/london.jpg";
 import bigbowl from "../../assets/images/banners.jpg";
 import thePranky from "../../assets/images/the_pranky.jpeg";
 
+
 const projects = [
   {
-    name: "Sports kart",
+    name: "Sports Kart",
     description:
-      "This is an online e-commerce web application to buy and sell the sports related products",
+      "This is an online e-commerce web application to buy and sell the sports related products ",
     img: sports,
     url: "",
   },

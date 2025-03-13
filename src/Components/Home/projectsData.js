@@ -1,7 +1,7 @@
 import sports from "../../assets/images/sports.jpg";
 import parallax from "../../assets/images/parallex.png";
 import spotify from "../../assets/images/spotify.jpg";
-import agumentik from "../../assets/images/london.jpg";
+import agumentik from "../../assets/images/agumentik.jpg";
 import bigbowl from "../../assets/images/banners.jpg";
 import thePranky from "../../assets/images/the_pranky.jpeg";
 

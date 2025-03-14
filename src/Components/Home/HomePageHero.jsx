@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { ThemeContext } from "../../Store/ThemeContext ";
+import { gsap } from "gsap";
 import {
   FaFacebook,
   FaInstagram,
@@ -49,6 +50,51 @@ const BUTTON_STYLES = `
 
 function HomePageHero() {
   const { theme, isDark } = useContext(ThemeContext);
+  const imageRef = useRef(null);
+  const contentRef = useRef(null);
+  const socialIconsRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    // Initial setup - hide elements
+    gsap.set(imageRef.current, { x: 100, opacity: 0 });
+    gsap.set(contentRef.current.children, { y: 30, opacity: 0 });
+    gsap.set(socialIconsRef.current.children, { scale: 0, opacity: 0 });
+    gsap.set(buttonRef.current, { y: 20, opacity: 0 });
+
+    // Create timeline for animations
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    // Animate content
+    tl.to(contentRef.current.children, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.2,
+    })
+    // Animate image
+    .to(imageRef.current, {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+    }, "-=0.5")
+    // Animate social icons
+    .to(socialIconsRef.current.children, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.1,
+    }, "-=0.5")
+    // Animate button
+    .to(buttonRef.current, {
+      y: 0,
+      opacity: 1,
+      duration: 0.5,
+    }, "-=0.3");
+
+    // Cleanup
+    return () => tl.kill();
+  }, []);
 
   const textColorClass = isDark ? "text-gray-200" : "text-gray-700";
   const headingColorClass = isDark ? "text-white" : "text-gray-900";
@@ -62,7 +108,7 @@ function HomePageHero() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Text Content */}
-              <div className="space-y-6 md:space-y-8 text-center md:text-left">
+              <div className="space-y-6 md:space-y-8 text-center md:text-left" ref={contentRef}>
                 <div className="space-y-3 md:space-y-4">
                   <h1 className={`text-xl sm:text-2xl lg:text-3xl font-bold ${textColorClass} tracking-wide`}>
                     Hello, It's Me
@@ -80,7 +126,7 @@ function HomePageHero() {
                 </p>
 
                 {/* Social Icons */}
-                <div className="flex justify-center md:justify-start gap-4 sm:gap-6">
+                <div className="flex justify-center md:justify-start gap-4 sm:gap-6" ref={socialIconsRef}>
                   {SOCIAL_LINKS.map(({ Icon, url }, index) => (
                     <a
                       key={index}
@@ -97,7 +143,7 @@ function HomePageHero() {
                 </div>
 
                 {/* Download CV Button */}
-                <div className="pt-2">
+                <div className="pt-2" ref={buttonRef}>
                   <button className={BUTTON_STYLES}>
                     Download CV
                   </button>
@@ -105,16 +151,15 @@ function HomePageHero() {
               </div>
 
               {/* Image Container */}
-              <div className="relative mt-8 md:mt-0">
+              <div className="relative mt-8 md:mt-0" ref={imageRef}>
                 <div className="relative max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] mx-auto">
                   <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/20 to-amber-600/20 rounded-2xl blur-2xl animate-pulse" />
                   <div className="relative group">
                     <img
                       src={img}
                       alt="Md Azharuddin Profile"
-                      className="w-full h-auto object-cover rounded-2xl shadow-lg transition-all duration-500 group-hover:scale-[1.02] group-hover:rotate-2"
+                      className="w-full h-auto object-cover rounded-2xl shadow-lg transition-all duration-500 group-hover:scale-[1.02] "
                     />
-                    <div className="absolute inset-0 rounded-2xl transition-all duration-300 group-hover:ring-4 group-hover:ring-amber-500/50" />
                   </div>
                 </div>
               </div>

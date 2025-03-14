@@ -11,7 +11,7 @@ function Layout() {
     <main className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'} ${theme.themeColor}`}>
       <Navbar />
       <Outlet />
-      <Footer />
+      <Footer/>
     </main>
   );
 }

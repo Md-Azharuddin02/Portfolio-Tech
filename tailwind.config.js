@@ -41,13 +41,21 @@ export default {
           '50%': {
             transform: 'translateY(-5px)'
           }
+        },
+        ellipsis: {
+          '0%': { content: '.' },
+          '33%': { content: '..' },
+          '66%': { content: '...' },
+          '100%': { content: '.' }
         }
       },
       animation: {
         'fade-in-up': 'fade-in-up 0.5s ease-out',
         'fade-in': 'fade-in 0.5s ease-out',
         'pulse-subtle': 'pulse-subtle 2s ease-in-out infinite',
-        'bounce-subtle': 'bounce-subtle 3s ease-in-out infinite'
+        'bounce-subtle': 'bounce-subtle 3s ease-in-out infinite',
+        'spin-fast': 'spin 0.8s linear infinite',
+        'ellipsis': 'ellipsis 1.4s infinite'
       },
       colors: {
         amber: {

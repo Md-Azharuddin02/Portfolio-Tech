@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ErrorBoundary from './Components/ErrorBoundary'
+import Loader from './Components/Home/loader';
 
 // Lazy load components
 const Layout = React.lazy(() => import('./Components/Layout/Layout'));
@@ -16,7 +17,7 @@ const LoadingSpinner = () => (
 function App() {
   return (
     <ErrorBoundary>
-      <Suspense fallback={<LoadingSpinner/>}>
+      <Suspense fallback={<Loader/>}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

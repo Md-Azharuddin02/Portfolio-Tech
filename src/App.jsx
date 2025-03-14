@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ErrorBoundary from './Components/ErrorBoundary'
-import Loader from './Components/Home/loader';
+import Loader from './Components/Home/Loader';
 
 // Lazy load components
 const Layout = React.lazy(() => import('./Components/Layout/Layout'));

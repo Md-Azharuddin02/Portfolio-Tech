@@ -10,7 +10,7 @@ function Navbar() {
     const { isDark, handleTheamChange, active, handleSetActive, isOpen, handleMenuBar } = useContext(ThemeContext);
 
     return (
-        <header className="sticky top-0 z-40 w-full">
+        <header className="sticky top-0 z-[999] w-full">
             {/* Main Navbar */}
             <nav className={`
                 relative 
@@ -18,13 +18,14 @@ function Navbar() {
                 ${isDark ? 'bg-gray-900/90' : 'bg-white/90'} 
                 backdrop-blur-md
                 shadow-lg
+                z-[1000]
             `}>
                 <div className="container mx-auto px-4 py-4">
                     <div className="flex items-center justify-between relative">
                         {/* Logo */}
                         <Link 
                             to="#" 
-                            className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}
+                            className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} relative z-[1000]`}
                         >
                             Portfolio
                         </Link>
@@ -53,7 +54,7 @@ function Navbar() {
                         </div>
 
                         {/* Theme Toggle and Menu */}
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-4 relative z-[1000]">
                             <button
                                 onClick={handleTheamChange}
                                 className={`text-2xl ${isDark ? 'text-amber-500' : 'text-amber-600'}`}
@@ -68,17 +69,16 @@ function Navbar() {
                                     md:hidden 
                                     text-2xl 
                                     relative 
-                                    z-[60]
                                     p-2
                                     rounded-full
-                                    transition-colors
+                                    transition-all
                                     duration-300
-                                    ${isOpen ? 'bg-gray-800/50' : ''}
+                                  
                                 `}
                                 aria-label="Toggle menu"
                             >
                                 {isOpen 
-                                    ? <MdCancel className="text-amber-500" size={24} /> 
+                                    ? <MdCancel className="text-grey-900 " size={24} /> 
                                     : <RxHamburgerMenu className={isDark ? 'text-white' : 'text-gray-900'} size={24} />
                                 }
                             </button>
@@ -92,8 +92,8 @@ function Navbar() {
                 fixed 
                 inset-0 
                 md:hidden 
-                z-50
-                ${isOpen ? 'visible' : 'invisible'}
+                z-[990]
+                ${isOpen ? 'visible opacity-100' : 'invisible opacity-0'}
                 transition-all 
                 duration-300
             `}>
@@ -104,7 +104,6 @@ function Navbar() {
                         inset-0 
                         bg-black/50 
                         backdrop-blur-sm
-                        ${isOpen ? 'opacity-100' : 'opacity-0'}
                         transition-opacity 
                         duration-300
                     `}

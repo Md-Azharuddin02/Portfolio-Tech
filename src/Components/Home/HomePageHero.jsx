@@ -103,7 +103,7 @@ function HomePageHero() {
 
   return (
     <section className={`flex items-center w-full ${theme.themeColor}`}>
-      <div className="w-full py-8 sm:py-12 lg:py-16">
+      <div className="w-full py-5 sm:py-5 lg:py-5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">

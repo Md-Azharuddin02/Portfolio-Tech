@@ -27,19 +27,17 @@ import {
 // Reusable style configurations
 const STYLES = {
   container: (isDark) => `
-    container mx-auto 
+    w-full
     grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 
-    gap-4 p-4 sm:p-6
+    gap-4 p-6 sm:p-8
     rounded-xl
     transition-all duration-300
     ${isDark
-      ? 'bg-gray-900/70 bg-gradient-to-br from-gray-900/70 to-gray-800/70'
-      : 'bg-white/60 bg-gradient-to-br from-white/60 via-white/30 to-gray-50/40'
-    }
-   
-    shadow-lg
+      ? 'bg-gray-900/40 shadow-black/20 border-gray-700/30'
+      : 'bg-[rgba(180,180,180,0.05)] border-[rgba(180,180,180,1)]'}
+    shadow-[0_4px_30px_rgba(0,0,0,0.1)]
+
     border
-    ${isDark ? 'border-gray-700/30' : 'border-white/60'}
   `,
   skillCard: (isDark) => `
     flex flex-col items-center justify-center
@@ -133,29 +131,33 @@ const Skills = () => {
 
   return (
     <section
-      className={`py-12 sm:py-16 lg:py-20 transition-colors duration-200 ${theme.themeColor}`}
+      className={`w-full ${theme.themeColor} py-16 lg:py-20 overflow-hidden`}
       id="skills"
       aria-labelledby="skills-title"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Title */}
+        <div className="text-center mb-12 lg:mb-5">
           <h2 id="skills-title" className={STYLES.sectionTitle(isDark)}>
             My <span className="text-amber-500">Skills</span>
           </h2>
-          <div className="w-24 h-1 bg-amber-500 mx-auto rounded-full"></div>
         </div>
-        <div 
-          className={STYLES.container(isDark)}
-          role="list"
-          aria-label="Skills grid"
-        >
-          {allSkills.map((skill) => (
-            <SkillCard
-              key={skill.name}
-              skill={skill}
-              isDark={isDark}
-            />
-          ))}
+
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto">
+          <div 
+            className={STYLES.container(isDark)}
+            role="list"
+            aria-label="Skills grid"
+          >
+            {allSkills.map((skill) => (
+              <SkillCard
+                key={skill.name}
+                skill={skill}
+                isDark={isDark}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

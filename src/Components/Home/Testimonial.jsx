@@ -53,17 +53,20 @@ const TESTIMONIALS = [
 
 function TestimonialCard({ testimonial, isDark }) {
   return (
-    <div className="bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-xl shadow-xl 
+    <div className={`${isDark ? 'bg-white/5 hover:bg-white/10 border-white/5' : 'bg-[rgba(180,180,180,0.05)] hover:bg-[rgba(180,180,180,0.1)] border-[rgba(180,180,180,1)]'}
+      rounded-xl shadow-xl 
       p-4 sm:p-6 md:p-8 
-      w-[260px] sm:w-[320px] md:w-[380px] lg:w-[420px]
-      h-[300px] sm:h-[320px] md:h-[360px] lg:h-[400px]
+      w-[220px] sm:w-[320px] md:w-[380px] lg:w-[420px]
+      h-[260px] sm:h-[320px] md:h-[360px] lg:h-[400px]
       flex-shrink-0 mx-auto flex flex-col 
-      transition-all duration-300 border border-white/5">
+      transition-all duration-300 border
+     
+      shadow-[0_4px_30px_rgba(0,0,0,0.1)]`}>
       <div className="flex flex-col items-center h-full">
         {/* Profile Section */}
         <div className="flex flex-col items-center space-y-2 sm:space-y-3">
           <div className="relative">
-            <div className="absolute -inset-0.5 bg-amber-500/20 rounded-full blur-sm"></div>
+            <div className="absolute -inset-0.5 bg-amber-500/20 rounded-full"></div>
             <img
               src={testimonial.image}
               alt={testimonial.name}
@@ -121,46 +124,38 @@ function Testimonial() {
   const { theme, isDark } = useContext(ThemeContext);
 
   return (
-    <section className={`w-full ${theme.themeColor} py-8 md:py-16`} id="testimonials">
-      <div className="container mx-auto px-2 sm:px-4">
+    <section className={`w-full ${theme.themeColor} py-8 md:py-16 overflow-hidden`} id="testimonials">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-6 md:mb-12">
-          <h2 className={`text-2xl md:text-4xl font-bold mb-3 md:mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            <span className="text-amber-500">Testimonials</span>
+        <div className="text-center mb-10 sm:mb-12 lg:mb-5">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8">
+            Team <span className="text-amber-500">Endorsements</span>
           </h2>
-          <div className="w-20 md:w-24 h-1 bg-amber-500 mx-auto" />
         </div>
 
         {/* Testimonial Cards Scrolling Container */}
-        <div className="relative w-full max-w-[95vw] md:max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto relative">
           {/* Gradient Overlays */}
-          <div className="absolute inset-y-0 left-0 w-4  bg-gradient-to-r from-gray-900 to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-4  bg-gradient-to-l from-gray-900 to-transparent z-10" />
+       
           
           {/* Scrolling Content */}
           <div className="overflow-hidden relative">
             <div className="flex animate-scroll">
               {/* First set of cards */}
               {TESTIMONIALS.map((testimonial) => (
-                <div key={testimonial.id} className="px-1.5 sm:px-2 md:px-3">
+                <div key={testimonial.id} className="px-2 sm:px-3 md:px-4">
                   <TestimonialCard testimonial={testimonial} isDark={isDark} />
                 </div>
               ))}
               {/* Second set */}
               {TESTIMONIALS.map((testimonial) => (
-                <div key={`${testimonial.id}-duplicate`} className="px-1.5 sm:px-2 md:px-3">
+                <div key={`${testimonial.id}-duplicate`} className="px-2 sm:px-3 md:px-4">
                   <TestimonialCard testimonial={testimonial} isDark={isDark} />
                 </div>
               ))}
               {/* Third set */}
               {TESTIMONIALS.map((testimonial) => (
-                <div key={`${testimonial.id}-triplicate`} className="px-1.5 sm:px-2 md:px-3">
-                  <TestimonialCard testimonial={testimonial} isDark={isDark} />
-                </div>
-              ))}
-              {/* Fourth set for extra smoothness */}
-              {TESTIMONIALS.map((testimonial) => (
-                <div key={`${testimonial.id}-quadruplicate`} className="px-1.5 sm:px-2 md:px-3">
+                <div key={`${testimonial.id}-triplicate`} className="px-2 sm:px-3 md:px-4">
                   <TestimonialCard testimonial={testimonial} isDark={isDark} />
                 </div>
               ))}
@@ -174,18 +169,60 @@ function Testimonial() {
 
 export default Testimonial;
 
-// Add this to your global CSS (src/index.css)
+// Add these animations to your global CSS (src/index.css)
 /*
 @keyframes scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% / 3));
   }
 }
 
 .animate-scroll {
   animation: scroll 30s linear infinite;
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
 }
 */

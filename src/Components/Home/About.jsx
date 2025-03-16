@@ -52,9 +52,9 @@ const TabButton = ({ isActive, onClick, children, isDark }) => (
                 ? "bg-amber-500 text-white shadow-lg transform scale-105"
                 : isDark
                 ? "bg-gray-800/40 text-gray-200 hover:bg-gray-700/50 hover:text-white"
-                : "bg-white/30 text-gray-800 hover:bg-white/40 hover:text-gray-900"
+                : "bg-[rgba(180,180,180,0.05)] border border-[rgba(180,180,180,1)] text-gray-800 hover:bg-[rgba(180,180,180,0.1)]"
             }
-            hover:shadow-md
+            shadow-[0_4px_30px_rgba(0,0,0,0.1)]
             hover:transform
             hover:scale-105
         `}
@@ -73,10 +73,11 @@ const InfoCard = ({ item, isDark, className }) => (
             ${
               isDark
                 ? "bg-gray-800/30 hover:bg-gray-800/40 border-gray-700/30"
-                : "bg-white/20 hover:bg-white/30 border-white/30"
+                : "bg-[rgba(180,180,180,0.05)] hover:bg-[rgba(180,180,180,0.1)] border-[rgba(180,180,180,1)]"
             }
             border
-            hover:shadow-xl
+           
+            shadow-[0_4px_30px_rgba(0,0,0,0.1)]
             hover:transform
             hover:scale-[1.02]
             ${className}
@@ -117,43 +118,39 @@ function About() {
     <div className={`w-full  overflow-hidden`}>
       <section className="py-16 lg:py-20 relative" id="about">
         {/* Glass Background Effect */}
-        <div className="absolute inset-0 backdrop-blur-xl  pointer-events-none" />
+        <div className="absolute inset-0  pointer-events-none" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
           <div className="text-center mb-12 lg:mb-5">
             <h2
-              className={`text-4xl lg:text-5xl font-bold mb-4 ${
+              className={`text-4xl lg:text-5xl font-bold mb-8 ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
               About <span className="text-amber-500">Me</span>
             </h2>
-            <div className="w-24 h-1.5 bg-amber-500 mx-auto rounded-full" />
           </div>
 
           {/* Main Content */}
           <div
             className={`
-                        max-w-6xl mx-auto
+                        max-w-7xl mx-auto
                         rounded-2xl
                         p-8
-                     
-                        ${
-                          isDark
-                            ? "bg-gray-900/40 shadow-black/20"
-                            : "bg-white/30 shadow-gray-200/30"
-                        }
-                        shadow-xl
+                        ${isDark 
+                          ? "bg-gray-900/40 shadow-black/20 border-gray-700/30" 
+                          : "bg-[rgba(180,180,180,0.05)] border-[rgba(180,180,180,1)]"}
+                        shadow-[0_4px_30px_rgba(0,0,0,0.1)]
+                        
                         border
-                        ${isDark ? "border-gray-700/30" : "border-white/40"}
                     `}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               {/* Left Side - Image */}
               <div className="hidden lg:flex justify-center items-center">
                 <div className="relative w-72 aspect-[3/4] group">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/20 to-amber-600/20 rounded-2xl group-hover:blur-3xl transition-all duration-500" />
+                  <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/20 to-amber-600/20 rounded-2xl transition-all duration-500" />
                   <img
                     src={img}
                     alt="About Me"

@@ -59,3 +59,29 @@
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+.animate-gradient-text {
+  background: linear-gradient(
+    to right,
+    #F59E0B,
+    #FBBF24,
+    #F59E0B
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes shrink-width {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-shrink-width {
+  animation: shrink-width 3s linear forwards;
+}
